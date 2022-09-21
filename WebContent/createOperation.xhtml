@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+        <h:head>
+			<title>Create Record</title>
+        </h:head>
+        <h:body style="background-color:#E0FFFF">
+            <p:card style="text-align:center;width:47%;margin-left:27%;margin-top:10%">
+			    <f:facet name="title">
+			        Create Record
+			    </f:facet>
+			    <p:staticMessage rendered="#{not empty enteredIdFind}" severity="info" summary="INFO" detail="Student Created Successfully" style="width: 60%"/>
+			    <hr/>
+			    <h:form style="text-align:left">
+			    Name: <p:inputText label="Name" id="name" value="#{student.name}" required="true" requiredMessage="Please enter a Name" style="margin-left:11.5%" validator="#{student.validateString}"/>
+			    <p:message for="name"/>
+			    <br/>
+			    <br/>
+			    Department: <p:inputText label="Department" id="department" value="#{student.department}" required="true" requiredMessage="Please enter a Department" style="margin-left:4.2%" validator="#{student.validateString}"/>
+			    <p:message for="department"/>
+			    <br/>
+			    <br/>
+			    <p:commandButton ajax="false" value="Create" style="background-color:green;margin-right:2%;margin-left:33%" icon="pi pi-check-square" action="#{student.saveStudentRecord}"/>
+				<p:button value="Return" style="background-color:grey" outcome="index" icon="pi pi-arrow-left" formnovalidate="formnovalidate"/>
+			    </h:form>
+			</p:card>
+        </h:body>
+    </f:view>
+</html>

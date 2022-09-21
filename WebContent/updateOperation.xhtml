@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+        <h:head>
+			<title>Update Record</title>
+        </h:head>
+        <h:body style="background-color:#E0FFFF">
+            <p:card style="text-align:center;width:49%;margin-left:27%;margin-top:10%">
+			    <f:facet name="title">
+			        Update Record
+			    </f:facet>
+			    <p:staticMessage rendered="#{not empty enteredIdFind}" severity="info" summary="INFO" detail="Student Updated Successfully" style="width: 60%"/>
+			    <p:staticMessage rendered="#{not empty findStudentById}" severity="error" summary="Error" detail="Student NOT Found in Database" style="width: 60%"/>
+			    <hr/>
+			    <h:form style="text-align:left">
+			    ID: <p:inputText label="ID" type="number" id="ID" value="#{student.id}" required="true" requiredMessage="Please enter an ID" style="margin-left:9.75%" validator="#{student.validateID}"/>
+			    <p:message for="ID"/>
+			    <br/>
+			    <br/>
+			    Name: <p:inputText id="Name" value="#{student.name}" required="true" requiredMessage="Please enter a Name" style="margin-left:5.5%" validator="#{student.validateString}"/>
+			    <p:message for="Name"/>
+			    <br/>
+			    <br/>
+			    Department: <p:inputText id="Department" value="#{student.department}" required="true" requiredMessage="Please enter a Department" style="margin-left:8%" validator="#{student.validateString}"/>
+			    <p:message for="Department"/>
+			    <br/>
+			    <br/>
+			    <p:commandButton ajax="false" value="Save" style="background-color:green;margin-right:2%;margin-left:34%" icon="pi pi-save" action="#{student.updateStudentDetails}"/>
+			    <p:button value="Return" style="background-color:grey" outcome="index" icon="pi pi-arrow-left" formnovalidate="formnovalidate"/>
+			    </h:form>
+			</p:card>
+        </h:body>
+    </f:view>
+</html>
